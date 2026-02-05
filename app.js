@@ -21,7 +21,7 @@ const articles = [
       "How subtle animations and feedback loops create delightful user experiences that keep users engaged.",
     tags: ["ux", "ui"],
     readTime: 10,
-    image: null,
+    image: "https://picsum.photos/seed/micro1/640/400",
   },
   {
     id: 3,
@@ -137,14 +137,10 @@ function renderCards(category) {
     .map(
       (a) => `
     <article class="card">
-      ${
-        a.image
-          ? `<div class="card-image-wrapper">
-              <img class="card-image" src="${a.image}" alt="${a.title}">
-            </div>`
-          : ""
-      }
-      <div class="card-body${a.image ? "" : " card-body-only"}">
+      <div class="card-image-wrapper">
+        <img class="card-image" src="${a.image}" alt="${a.title}">
+      </div>
+      <div class="card-body">
         <div class="card-meta">
           <span class="card-meta-dot"></span>
           <span class="card-meta-source">${a.source}</span>
