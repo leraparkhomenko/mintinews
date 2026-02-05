@@ -14,14 +14,14 @@ const articles = [
   {
     id: 2,
     category: "develop",
-    source: "UX Collective",
-    day: "Saturday",
-    title: "Data Visualization Best Practices",
+    source: "Nielsen Norman Group",
+    day: "Yesterday",
+    title: "The Psychology of Microinteractions",
     excerpt:
-      "Turning complex data into clear, actionable insights through thoughtful visual design.",
-    tags: ["ui", "product"],
+      "How subtle animations and feedback loops create delightful user experiences that keep users engaged.",
+    tags: ["ux", "ui"],
     readTime: 10,
-    image: "https://picsum.photos/seed/dev1/640/400",
+    image: null,
   },
   {
     id: 3,
@@ -111,6 +111,7 @@ const articles = [
 
 const TAG_CLASSES = {
   ui: "tag-ui",
+  ux: "tag-ux",
   product: "tag-product",
   strategy: "tag-strategy",
   code: "tag-code",
@@ -136,10 +137,14 @@ function renderCards(category) {
     .map(
       (a) => `
     <article class="card">
-      <div class="card-image-wrapper">
-        <img class="card-image" src="${a.image}" alt="${a.title}">
-      </div>
-      <div class="card-body">
+      ${
+        a.image
+          ? `<div class="card-image-wrapper">
+              <img class="card-image" src="${a.image}" alt="${a.title}">
+            </div>`
+          : ""
+      }
+      <div class="card-body${a.image ? "" : " card-body-only"}">
         <div class="card-meta">
           <span class="card-meta-dot"></span>
           <span class="card-meta-source">${a.source}</span>

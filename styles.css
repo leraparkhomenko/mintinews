@@ -83,6 +83,7 @@ body {
 .card-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
   gap: 28px;
 }
 
@@ -93,7 +94,8 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 520px;
+  min-height: 520px;
+  height: 100%;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -107,14 +109,22 @@ body {
 .card-image-wrapper {
   padding: 16px 16px 0 16px;
   flex-shrink: 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: stretch;
 }
 
 .card-image {
   width: 100%;
-  height: 260px;
+  min-height: 260px;
   object-fit: cover;
   border-radius: 14px;
   display: block;
+}
+
+/* Cards without images: body fills entire card */
+.card-body-only {
+  flex: 1;
 }
 
 /* ── Card Body ────────────────────────────────── */
@@ -209,6 +219,12 @@ body {
   color: #7c8dba;
   border-color: #d0d8ed;
   background: #eef1f8;
+}
+
+.tag-ux {
+  color: #2ab77e;
+  border-color: #b6e6d0;
+  background: #e8f8f0;
 }
 
 .tag-product {
