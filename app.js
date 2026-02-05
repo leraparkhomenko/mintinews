@@ -122,16 +122,20 @@ const clockSvg = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0
 const bookmarkSvg = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"/></svg>`;
 
 const grid = document.getElementById("card-grid");
-const countEl = document.querySelector(".article-count");
 const filterBtns = document.querySelectorAll(".filter-btn");
+const sortBtn = document.getElementById("sort-btn");
+
+let sortAsc = true;
 
 function renderCards(category) {
-  const filtered =
+  let filtered =
     category === "all"
-      ? articles
+      ? [...articles]
       : articles.filter((a) => a.category === category);
 
-  countEl.textContent = `[${filtered.length} articles]`;
+  if (!sortAsc) {
+    filtered = filtered.slice().reverse();
+  }
 
   grid.innerHTML = filtered
     .map(
@@ -169,12 +173,23 @@ function renderCards(category) {
     .join("");
 }
 
+function getActiveCategory() {
+  const active = document.querySelector(".filter-btn.active");
+  return active ? active.dataset.category : "all";
+}
+
 filterBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     filterBtns.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
     renderCards(btn.dataset.category);
   });
+});
+
+sortBtn.addEventListener("click", () => {
+  sortAsc = !sortAsc;
+  sortBtn.classList.toggle("active", !sortAsc);
+  renderCards(getActiveCategory());
 });
 
 // Initial render
