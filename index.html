@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MintiNews</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="logo">MintiNews</h1>
+    </header>
+
+    <nav class="filters">
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="design">Design</button>
+        <button class="filter-btn" data-category="develop">Develop</button>
+        <button class="filter-btn" data-category="marketing">Marketing</button>
+        <button class="filter-btn" data-category="sales">Sales</button>
+      </div>
+      <span class="article-count"></span>
+    </nav>
+    <hr class="filter-divider">
+
+    <main class="card-grid" id="card-grid">
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
