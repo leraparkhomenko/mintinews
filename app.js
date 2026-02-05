@@ -138,7 +138,7 @@ function renderCards(category) {
       (a) => `
     <article class="card">
       <div class="card-image-wrapper">
-        <img class="card-image" src="${a.image}" alt="${a.title}" onerror="this.style.visibility='hidden'">
+        <img class="card-image" src="${a.image}" alt="${a.title}" onerror="this.closest('.card').style.display='none'">
       </div>
       <div class="card-body">
         <div class="card-meta">
