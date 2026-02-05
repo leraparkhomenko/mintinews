@@ -84,6 +84,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 1fr;
+  align-items: stretch;
   gap: 28px;
 }
 
@@ -117,6 +118,7 @@ body {
   object-fit: cover;
   border-radius: 14px;
   display: block;
+  background: linear-gradient(135deg, #e0e7ee 0%, #c9d6df 100%);
 }
 
 /* ── Card Body ────────────────────────────────── */
